@@ -27,11 +27,23 @@
       border-radius: 4px;
       padding: 2px;
     }
+
+    .info-block {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      background-color: whitesmoke;
+    }
   </style>
 </head>
 
 <body>
   <div id="graph"></div>
+  <div class="info-block">
+    <div>Notes: <b id="nodes"></b></div>
+    <div>Links: <b id="links"></b></div>
+  </div>
 
   <script type="text/jsx">
     fetch('./test-data.json').then(res => res.json()).then(data => {
@@ -44,6 +56,8 @@
         />,
         document.getElementById('graph')
       );
+      document.querySelector('#nodes').innerHTML = data.nodes.length
+      document.querySelector('#links').innerHTML = data.links.length
     });
   </script>
 </body>
